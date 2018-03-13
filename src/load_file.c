@@ -26,7 +26,7 @@ int		open_file(char *file_name)
 
 int		*load_file(char *file_name)
 {
-	char	*line;
+	char	**line;
 	char	**split_line;
 	int		x;
 	int		y;
@@ -38,10 +38,11 @@ int		*load_file(char *file_name)
 	{
 		split_line = ft_strsplit(*line, ' ');
 		x = 0;
-		while (*split_line)
+		while (split_line[x])
 		{
-			ft_strmap(*split_line, ft_atoi);
-			split_line++;
+			if (!ft_strcheck(split_line[x]))
+				return (0);
+			add_point(&line, , &x, y);
 		}
 	}
 }

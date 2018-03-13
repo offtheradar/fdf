@@ -36,6 +36,10 @@ typedef struct		s_3d_pixel
 	struct s_3d_pixel	*next;
 }					t_3d_pixel;
 
-void	draw_line(int x0, int y0, int x1, int y1, t_display_info *info);
+int					open_file(char *file_name);
+
+int					*load_file(char *file_name);
+
+void				draw_line(int x0, int y0, int x1, int y1, t_display_info *info);
 
 #endif
