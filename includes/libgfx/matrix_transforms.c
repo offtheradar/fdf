@@ -75,4 +75,32 @@ void		scale_matrix(double mat_to_scale[4][4], double sx, double sy,
 	ft_mult_mat_mat(mat_to_scale, scale_matrix, mat_to_scale);
 }
 
+void		rotate_matrix(double matrix[4][4], float ax, float ay, float az)
+{
+	float xmat[4][4];
+	float ymat[4][4];
+	float zmat[4][4];
+	float mat1[4][4];
+	float mat2[4][4];
+
+	identity_matrix(init_matrix(xmat));
+	identity_matrix(init_matrix(ymat));
+	identity_matrix(init_matrix(zmat));
+	xmat[1][1] = cos(ax);
+	xmat[1][2] = sin(ax);
+	xmat[2][1] = -sin(ax);
+	xmat[2][2] = cos(ax);
+	ymat[0][0] = cos(ay);
+	ymat[0][2] = -sin(ay);
+	ymat[2][0] = sin(ay);
+	ymat[2][2] = cos(ay);
+	zmat[0][0] = cos(az);
+	zmat[0][1] = sin(az);
+	zmat[1][0] = -sin(az);
+	zmat[1][1] = cos(az);
+	ft_mult_mat_mat(matrix, ymat, mat1);
+	ft_mult_mat_mat(mat1, xmat, mat2);
+	ft_mult_mat_mat(mat2, zmat, matrix);	
+}
+
 
