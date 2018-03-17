@@ -6,11 +6,15 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/13 23:51:15 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/16 15:57:46 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+
+/*
+**Safely open the file 
+*/
 
 int		open_file(char *file_name)
 {
@@ -24,26 +28,75 @@ int		open_file(char *file_name)
 	return (fd);
 }
 
-int		*load_file(char *file_name)
+/*
+** Loads the file to a list of strings, and then converts the string
+** to an array of int's.
+*/
+
+t_list	*load_file(t_plot *plt, int fd)
 {
-	char	**line;
-	char	**split_line;
+	char	*line;
+	t_list	*lst;
+	int		num_words;
+
+	plt->width = -1;
+	lst = NULL;
+	num_words = 0;
+	plt->width = -1;
+	plt->z_min = MAX_INT;
+	plt->z_max = MIN_INT;
+	while (get_next_line(fd, &line) == 1)
+	{
+		if ((num_words = ft_count_words(line, ' ')) > plt->width)
+			plt->width = num_words;
+		ft_lstadd(&(ft_lstnew(line, ft_strlen(line) + 1)), lst);
+		(plt->height)++;
+	}
+	return (lst);
+}
+
+/*
+** Convert the list of strings to a 3D matrix, initializing local, world and
+** aligned coordinates.
+*/
+
+void	convert_lst_to_arr(t_plot *plt, t_list *lst)
+{
 	int		x;
 	int		y;
-	int		fd;
+	int		z;
+	char	**buff;
 
-	fd = open_file(file_name);
+	plt->point_matrix = (t_vertex ***)ft_memalloc(sizeof(t_vertex **) * plt->height);
 	y = 0;
-	while (get_next_line(fd, line) == 1)
+	while (y < plt->height)
 	{
-		split_line = ft_strsplit(*line, ' ');
 		x = 0;
-		while (split_line[x])
+		plt->point_matrix[y] = (t_vertex **)ft_memalloc(sizeof(t_vertex *) * plt->width);
+		buff = ft_strsplit(lst->content, ' ');
+		while (x < plt->width)
 		{
-			if (!ft_strcheck(split_line[x]))
-				return (0);
-			add_point(&line, , &x, y);
+			z = ft_atoi(lst->content);
+			plt->point_matrix = create_vertex(x, y, z);
+			plt->z_min = (z < plt->z_min ? z : plt->z_min);
+			plt->z_max = (z > plt->z_max ? z : plt->z_max);
+			x++;
 		}
+		lst = lst->next;
+		y++;
 	}
 }
+
+/*
+** Creates matrix with local coordinates.
+*/
+void	create_vertices(t_plot *plt, char *filename)
+{
+	int fd;
+
+	fd = open_file(filename);
+	convert_lst_to_arr(plt, load_file(plt, fd));
+	close(fd);
+}
+
 

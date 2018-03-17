@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 20:13:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/15 21:40:56 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/16 13:40:27 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Copy a matrix from source to destination.
 */
 
-void	ft_cp_matrix(float src[4][4], float dst[4][4])
+void	ft_cp_matrix(double src[4][4], double dst[4][4])
 {
 	int i;
 	int j;
@@ -38,7 +38,7 @@ void	ft_cp_matrix(float src[4][4], float dst[4][4])
 ** This function multiplies a 4 x 4 matrix with a 4 x 1.
 */
 
-void	ft_mult_mat_vec(float mat[4][4], t_3d_pixel *src, t_3d_pixel *dst)
+void	ft_mult_mat_vec(double mat[4][4], t_3d_pixel *src, t_3d_pixel *dst)
 {
 	dst->x = src->x * mat[0][0] +
 				src->y * mat[1][0] +
@@ -59,7 +59,7 @@ void	ft_mult_mat_vec(float mat[4][4], t_3d_pixel *src, t_3d_pixel *dst)
 ** result.
 */
 
-void	ft_mult_mat_mat(float mat1[4][4], float mat2[4][4], float dest[4][4])
+void	ft_mult_mat_mat(double mat1[4][4], double mat2[4][4], double dest[4][4])
 {
 	int		x;
 	int		y;

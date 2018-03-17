@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 21:16:42 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/12 15:24:54 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/14 21:03:53 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include "get_next_line.h"
 # define MIN_INT -2147483648
+# define MAX_INT 2147483647
 # define IS_LOWER(x) (x >= 'a' && x <= 'z' ? 1 : 0)
 # define IS_UPPER(x) (x >= 'A' && x <= 'Z' ? 1 : 0)
 # define WHITESPACE(x) (x == '\n' || x == '\t' || x == ' ')

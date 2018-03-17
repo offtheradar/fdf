@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:05:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/15 21:44:56 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:43:36 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 
 void		zero_matrix(double mat[4][4])
 {
-	ft_bzero(mat[0], sizeof(double) * 4);
-	ft_bzero(mat[1], sizeof(double) * 4);
-	ft_bzero(mat[2], sizeof(double) * 4);
-	ft_bzero(mat[3], sizeof(double) * 4);
+	int i;
+
+	i = -1;
+	while (mat[++i])
+		ft_bzero(mat[i], sizeof(double) * 4);
 }
 
 /*
@@ -33,17 +34,13 @@ void		identity_matrix(double mat[4][4])
 	int i;
 	int j;
 
-	i = 0;
-	while (mat[i])
+	i = -1;
+	while (mat[++i])
 	{
-		j = 0;
-		while (mat[i][j])
-		{
+		j = -1;
+		while (mat[i][++j])
 			if (i == j)
 				mat[i][j] = 1;
-			j++;
-		}
-		i++;
 	}
 }
 
@@ -56,7 +53,7 @@ void		translate_matrix(double mat[4][4], double tx, double ty, double tz)
 	translation_matrix[3][0] = tx;
 	translation_matrix[3][1] = ty;
 	translation_matrix[3][2] = tz;
-	ft_mult_mat_mat(mat, translate_matrix, mat);
+	ft_mult_mat_mat(mat, translation_matrix, mat);
 }
 
 void		scale_matrix(double mat_to_scale[4][4], double sx, double sy,
@@ -87,4 +84,12 @@ void		rotate_matrix(double matrix[4][4], double theta, double phi,
 	ft_mult_mat_mat(matrix, ymat, mat1);
 	ft_mult_mat_mat(mat1, xmat, mat2);
 	ft_mult_mat_mat(mat2, zmat, matrix);
+}
+
+int main()
+{
+	double m[4][4];
+
+	zero_matrix(m);
+	return (0);
 }
