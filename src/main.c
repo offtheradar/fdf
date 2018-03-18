@@ -6,6 +6,6 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	info  = (t_info *)ft_memalloc(sizeof(t_info));
-	info->plot = load_file(argv[1]); 
+	info  = init_info();
+	create_vertices(info->plot, argv[1]);
 }

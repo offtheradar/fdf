@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/16 15:57:46 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/18 16:00:20 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int		open_file(char *file_name)
 ** to an array of int's.
 */
 
+void	ft_lst_add_to_end(t_list *new_l, t_list *lst)
+{
+	while (lst->next)
+		lst = lst->next;
+	lst->next = new_l;
+}
+
 t_list	*load_file(t_plot *plt, int fd)
 {
 	char	*line;
@@ -49,7 +56,7 @@ t_list	*load_file(t_plot *plt, int fd)
 	{
 		if ((num_words = ft_count_words(line, ' ')) > plt->width)
 			plt->width = num_words;
-		ft_lstadd(&(ft_lstnew(line, ft_strlen(line) + 1)), lst);
+		ft_lst_add_to_end((ft_lstnew(line, ft_strlen(line) + 1)), lst);
 		(plt->height)++;
 	}
 	return (lst);
@@ -77,7 +84,7 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 		while (x < plt->width)
 		{
 			z = ft_atoi(lst->content);
-			plt->point_matrix = create_vertex(x, y, z);
+			plt->point_matrix[y][x] = create_vertex(x, y, z);
 			plt->z_min = (z < plt->z_min ? z : plt->z_min);
 			plt->z_max = (z > plt->z_max ? z : plt->z_max);
 			x++;

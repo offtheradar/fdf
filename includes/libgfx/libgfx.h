@@ -6,13 +6,17 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/16 16:25:35 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/18 15:32:27 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBGFX_H
 # define LIBGFX_H
+# define WIN_WIDTH 500
+# define WIN_HEIGHT 500
 # include "../libft/libft.h"
+# include "../minilibx/mlx.h"
+# include <stdlib.h>
 # include <math.h>
 
 typedef struct		s_2d_pixel
@@ -47,14 +51,22 @@ typedef	struct		s_plot
 
 typedef struct		s_info
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
-	void	*img;
-	int		width;
-	int		height;
-	int		min_z;
-	int		max_z;
-	t_plot	*plot;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	void		*img;
+	int			is_proj;
+	double		focal_distance;
+	double		scale;
+	double		sx;
+	double		sy;
+	double		sz;
+	double		tx;
+	double		ty;
+	double		tz;
+	double		theta;
+	double		phi;
+	double		psi;
+	t_plot		*plot;
 }					t_info;
 
 t_2d_pixel			*create_2d_pix(double x, double y);
@@ -91,4 +103,15 @@ void				rotate_matrix(double matrix[4][4], double theta, double phi,
 									double psi);
 
 void				draw_line(int x0, int y0, int x1, int y1, t_info *info);
+
+void				local_to_world(t_info *info);
+
+void				world_to_aligned(t_info *info);
+
+double				get_projection(int focal_dist, double coord, double z_max,
+									double z);
+
+void				aligned_to_projected(t_info *info);
+
+t_info				*init_info(void);
 #endif

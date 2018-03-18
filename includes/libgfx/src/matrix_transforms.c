@@ -6,11 +6,11 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:05:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/16 14:43:36 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/18 11:59:02 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgfx.h"
+#include "../libgfx.h"
 
 /*
 ** Initialize Zero Matrix
@@ -84,12 +84,4 @@ void		rotate_matrix(double matrix[4][4], double theta, double phi,
 	ft_mult_mat_mat(matrix, ymat, mat1);
 	ft_mult_mat_mat(mat1, xmat, mat2);
 	ft_mult_mat_mat(mat2, zmat, matrix);
-}
-
-int main()
-{
-	double m[4][4];
-
-	zero_matrix(m);
-	return (0);
 }

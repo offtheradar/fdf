@@ -6,14 +6,12 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:44:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/15 22:03:51 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/18 15:30:06 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libgfx.h>
 
-void	compute_delta_step(double delta_x, double delta_y, double step_x,
-							double step_y, 
 void	draw_line(int x0, int y0, int x1, int y1, t_info *info)
 {
 	double	delta_x;
