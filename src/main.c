@@ -6,6 +6,8 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	info  = init_info();
+	info = init_info();
 	create_vertices(info->plot, argv[1]);
+/*	draw_wf(info);*/
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/18 15:32:27 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/19 13:44:16 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ typedef struct		s_vertex
 	t_3d_pixel	*aligned;
 	t_3d_pixel	*projected;
 }					t_vertex;
+
+typedef	struct		s_draw
+{
+	double		delta_x;
+	double		delta_y;
+	double		delta_z;
+	double		step_x;
+	double		step_y;
+	double		big_delta;
+	double		small_delta;
+	double		big_step;
+	double		small_step;
+	double		leading_var_0;
+	double		leading_var_1;
+	double		follow_var_0;
+	double		follow_var_1;
+}					t_draw;
 
 typedef	struct		s_plot
 {
@@ -75,6 +92,8 @@ t_3d_pixel			*create_3d_pix(double x, double y, double z);
 
 t_vertex			*create_vertex(double x, double y, double z);
 
+t_info				*init_info(void);
+
 void				zero_matrix(double mat[4][4]);
 
 void				identity_matrix(double mat[4][4]);
@@ -102,7 +121,10 @@ void				scale_matrix(double mat_to_scale[4][4], double sx,
 void				rotate_matrix(double matrix[4][4], double theta, double phi,
 									double psi);
 
-void				draw_line(int x0, int y0, int x1, int y1, t_info *info);
+void				create_delta_step(t_draw *var, t_3d_pixel *p0,
+										t_3d_pixel *p1);
+
+void				draw_line(t_3d_pixel *p0, t_3d_pixel *p1,t_info *info);
 
 void				local_to_world(t_info *info);
 
@@ -114,4 +136,8 @@ double				get_projection(int focal_dist, double coord, double z_max,
 void				aligned_to_projected(t_info *info);
 
 t_info				*init_info(void);
+
+void				construct_wf(t_info *info);
+
+void				draw_wf(t_info *info);
 #endif

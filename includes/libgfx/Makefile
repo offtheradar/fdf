@@ -6,27 +6,28 @@
 #    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/16 14:50:23 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/16 15:04:12 by ysibous          ###   ########.fr        #
+#    Updated: 2018/03/19 13:08:09 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libgfx.a
 
-FILES =		create_vertex.c
+FILES =		create_vertex_init_info.c
+FILES +=	change_frame_of_reference.c
 FILES +=	matrix_computations.c
 FILES +=	matrix_rotations.c
-FILES +=	matrix_transformations.c
+FILES +=	matrix_transforms.c
 
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SRC = $(addprefix src/, $(FILES))
-OBJ = $(addprefix build/. $(FILES:.c=.o))
+OBJ = $(addprefix build/, $(FILES:.c=.o))
 
 LIBGFX = -I .
 LIBFT = -I ../libft
 LIBX = -I ../minilibx
 
-.PHONY: all re clean fclean
 
 all: $(NAME)
 
@@ -40,11 +41,11 @@ fclean: clean
 
 build:
 		mkdir build/
-		src/*.c | build
-		@echo "Building $@"
-		gcc $(FLAGS) $(LIBFT) $(LIBX) $(LIBGFX) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 		@echo "Making $@"
-		ar rc $(NAME) $(OBJS)
+		ar rcs $(NAME) $(OBJ)
+
+build/%.o: src/%.c | build
+		$(CC) $(FLAGS) $(LIBFT) $(LIBX) $(LIBGFX) -c $< -o $@
 
