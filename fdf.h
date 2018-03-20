@@ -6,15 +6,15 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:36:22 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 13:03:48 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/19 19:40:49 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft/libft.h"
-# include "libgfx/libgfx.h"
-# include "minilibx/mlx.h"
+# include "./includes/libft/libft.h"
+# include "./includes/libgfx/libgfx.h"
+# include "./includes/minilibx/mlx.h"
 # include <fcntl.h>
 
 int					open_file(char *file_name);

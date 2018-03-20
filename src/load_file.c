@@ -6,11 +6,11 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 13:03:27 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/19 14:32:22 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libgfx/libgfx.h"
 
 /*
 **Safely open the file 

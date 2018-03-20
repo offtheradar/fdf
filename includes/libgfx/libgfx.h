@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 13:44:16 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/19 18:28:33 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
+# include <fcntl.h>
 # include <math.h>
 
 typedef struct		s_2d_pixel
@@ -140,4 +141,14 @@ t_info				*init_info(void);
 void				construct_wf(t_info *info);
 
 void				draw_wf(t_info *info);
+
+int					open_file(char *file_name);
+
+void				ft_lst_add_to_end(t_list *new_l, t_list *lst);
+
+t_list				*load_file(t_plot *plt, int fd);
+
+void				convert_lst_to_arr(t_plot *plt, t_list *lst);
+
+void				create_vertices(t_plot *plt, char *filename);
 #endif
