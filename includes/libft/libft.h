@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 21:16:42 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 18:26:22 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/20 15:59:32 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+void				ft_lst_add_to_end(t_list *new_l, t_list **lst);
 
 void				*ft_memalloc(size_t size);
 

@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 20:13:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/16 13:40:27 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/20 17:41:58 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	ft_mult_mat_mat(double mat1[4][4], double mat2[4][4], double dest[4][4])
 	int		y;
 
 	x = 0;
-	while (dest[x])
+	while (x < 4)
 	{
 		y = 0;
-		while (dest[x][y])
+		while (y < 4)
 		{
 			dest[x][y] = mat1[x][0] * mat2[0][y]
 						+ mat1[x][1] * mat2[1][y]

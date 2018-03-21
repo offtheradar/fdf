@@ -6,11 +6,12 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 15:44:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/18 14:58:47 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/21 11:02:16 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
+#include <stdio.h>
 
 /*
 ** Create global matrix from local coordinates.
@@ -43,28 +44,22 @@ void	local_to_world(t_info *info)
 void	world_to_aligned(t_info *info)
 {
 	double	global[4][4];
-	int		i[2];
+	int		x;
+	int		y;
 
 	identity_matrix(global);
 	rotate_matrix(global, info->theta, info->phi, info->psi);
 	scale_matrix(global, (info->scale * WIN_WIDTH) / info->plot->width,
 				(info->scale * WIN_HEIGHT) / info->plot->height, info->scale);
-	if (info->is_proj)
-		translate_matrix(global, info->sx, info->sy, info->sz);
-	else
-		translate_matrix(global, info->sx + WIN_WIDTH / 2,
-				info->sy + WIN_HEIGHT / 2, info->sz);
-	i[0] = -1;
-	while (++i[0] < info->plot->height)
+	translate_matrix(global, info->sx, info->sy, info->sz);
+	y = -1;
+	while (++y < info->plot->height)
 	{
-		i[1] = -1;
-		while (++i[1] < info->plot->width)
+		x = -1;
+		while (++x < info->plot->width)
 		{
-			ft_mult_mat_vec(global, info->plot->point_matrix[i[0]][i[1]]->world,
-							info->plot->point_matrix[i[0]][i[1]]->aligned);
-			info->plot->point_matrix[i[0]][i[1]]->aligned->z = info->is_proj ?
-				info->plot->point_matrix[i[0]][i[1]]->aligned->z :
-				info->plot->point_matrix[i[0]][i[1]]->local->z;
+			ft_mult_mat_vec(global, info->plot->point_matrix[y][x]->world,
+							info->plot->point_matrix[y][x]->aligned);
 		}
 	}
 }
@@ -72,12 +67,6 @@ void	world_to_aligned(t_info *info)
 /*
 ** Project world coordinates to 2D, save in projected matrix.
 */
-
-double	get_projection(int focal_dist, double coord, double z_max, double z)
-{
-	return ((focal_dist * coord) / (z_max - z) + WIN_WIDTH / 2);
-}
-
 void	aligned_to_projected(t_info *info)
 {
 	double	global[4][4];
@@ -93,16 +82,15 @@ void	aligned_to_projected(t_info *info)
 		{
 			if (info->plot->point_matrix[y][x]->aligned->z == 0)
 				info->plot->point_matrix[y][x]->aligned->z = 0.001;
-			info->plot->point_matrix[y][x]->projected->x = get_projection(
-				info->focal_distance,
-				info->plot->point_matrix[y][x]->projected->x, info->plot->z_max,
-				info->plot->point_matrix[y][x]->aligned->z);
-			info->plot->point_matrix[y][x]->projected->y = get_projection(
-				info->focal_distance,
-				info->plot->point_matrix[y][x]->projected->y, info->plot->z_max,
-				info->plot->point_matrix[y][x]->aligned->z);
-			info->plot->point_matrix[y][x]->projected->z =
-				info->plot->point_matrix[y][x]->local->z;
+			info->plot->point_matrix[y][x]->projected->x = info->focal_distance
+				* info->plot->point_matrix[y][x]->aligned->x
+				/ (info->plot->z_max - info->plot->point_matrix[y][x]->aligned->z)
+				+ WIN_WIDTH / 2;
+			info->plot->point_matrix[y][x]->projected->y = info->focal_distance
+				* info->plot->point_matrix[y][x]->aligned->y
+				/ (info->plot->z_max - info->plot->point_matrix[y][x]->aligned->z)
+				+ WIN_HEIGHT / 2;
+			info->plot->point_matrix[y][x]->projected->z = info->plot->point_matrix[y][x]->local->z;
 		}
 	}
 }

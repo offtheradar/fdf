@@ -6,7 +6,7 @@
 #    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/23 15:44:31 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/19 18:26:04 by ysibous          ###   ########.fr        #
+#    Updated: 2018/03/20 15:59:05 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ ft_strcmp.c ft_strjoin.c ft_strncpy.c ft_strsub.c ft_isdigit.c ft_lstnew.c \
 ft_memmove.c ft_putnbr_fd.c ft_strcpy.c ft_strlcat.c ft_strnequ.c \
 ft_strtrim.c ft_isprint.c ft_memalloc.c ft_memset.c ft_putstr.c ft_strdel.c \
 ft_strlen.c ft_strnew.c ft_tolower.c ft_memcmp.c ft_strsplit.c ft_itoa.c \
-ft_get_int_len.c ft_count_words.c ft_word_len.c get_next_line.c
+ft_get_int_len.c ft_count_words.c ft_word_len.c get_next_line.c \
+ft_lst_add_to_end.c
 
 RM = rm -f
 

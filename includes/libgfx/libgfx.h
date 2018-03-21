@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 18:28:33 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/20 18:04:03 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void				rotate_matrix(double matrix[4][4], double theta, double phi,
 void				create_delta_step(t_draw *var, t_3d_pixel *p0,
 										t_3d_pixel *p1);
 
-void				draw_line(t_3d_pixel *p0, t_3d_pixel *p1,t_info *info);
+void				draw_line(t_3d_pixel p0, t_3d_pixel ip1, t_info *info);
 
 void				local_to_world(t_info *info);
 
@@ -143,8 +143,6 @@ void				construct_wf(t_info *info);
 void				draw_wf(t_info *info);
 
 int					open_file(char *file_name);
-
-void				ft_lst_add_to_end(t_list *new_l, t_list *lst);
 
 t_list				*load_file(t_plot *plt, int fd);
 

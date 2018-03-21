@@ -6,7 +6,7 @@
 #    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/18 16:10:47 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/19 19:33:43 by ysibous          ###   ########.fr        #
+#    Updated: 2018/03/20 16:10:12 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FILES = main.c
 FILES += load_file.c
 
 CC = gcc
-FLAGS = -Wall -Werror -Wall
+FLAGS = -Wall -Wextra -Werror
 
 SRC = $(addprefix src/, $(FILES))
 OBJ = $(addprefix build/, $(FILES:.c=.o))
@@ -53,14 +53,14 @@ minilibx/libmlx.a:
 	make -C includes/minilibx re
 
 $(NAME): libft/libft.a libgfx/libgfx.a  minilibx/libmlx.a $(OBJ)
-		@$(CC) $(FLAGS) $(MINILIBX) $(LIBFT) $(LIBFDF) $(LIBGFX) -I . $(FRAMEW) \
+		$(CC) $(FLAGS) $(MINILIBX) $(LIBFT) $(LIBFDF) $(LIBGFX) -I . $(FRAMEW) \
 			$(OBJ) -o $(NAME)
 
 build:
 		mkdir build
 
 build/%.o: src/%.c | build
-		@$(CC) $(FLAGS) $(SRC) $(MINILIBX) $(LIBFT) $(LIBGFX) $(FRAMEW) -I .c $< -o $@
+		$(CC) $(FLAGS) $(I_MINILIBX) $(LIBFT) $(LIBGFX) -I . -c $< -o $@
 
 clean:
 		rm -rf build

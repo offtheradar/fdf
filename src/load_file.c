@@ -6,14 +6,14 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/19 14:32:22 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/20 16:03:43 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libgfx/libgfx.h"
 
 /*
-**Safely open the file 
+**Safely open the file
 */
 
 int		open_file(char *file_name)
@@ -33,35 +33,25 @@ int		open_file(char *file_name)
 ** to an array of int's.
 */
 
-void	ft_lst_add_to_end(t_list *new_l, t_list *lst)
+t_list			*load_file(t_plot *plt, int fd)
 {
-	while (lst->next)
-		lst = lst->next;
-	lst->next = new_l;
-}
+	char	*buff;
+	int		result;
+	t_list	*list;
 
-t_list	*load_file(t_plot *plt, int fd)
-{
-	char	*line;
-	t_list	*lst;
-	int		num_words;
-
-	plt->width = -1;
-	lst = NULL;
-	num_words = 0;
+	list = NULL;
 	plt->width = -1;
 	plt->z_min = MAX_INT;
 	plt->z_max = MIN_INT;
-	while (get_next_line(fd, &line) == 1)
+	while ((result = get_next_line(fd, &buff)) > 0)
 	{
-		if ((num_words = ft_count_words(line, ' ')) > plt->width)
-			plt->width = num_words;
-		ft_lst_add_to_end((ft_lstnew(line, ft_strlen(line) + 1)), lst);
+		if (plt->width == -1)
+			plt->width = ft_count_words(buff, ' ');
+		ft_lst_add_to_end(ft_lstnew(buff, ft_strlen(buff) + 1), &list);
 		(plt->height)++;
 	}
-	return (lst);
+	return (list);
 }
-
 /*
 ** Convert the list of strings to a 3D matrix, initializing local, world and
 ** aligned coordinates.
@@ -83,7 +73,7 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 		buff = ft_strsplit(lst->content, ' ');
 		while (x < plt->width)
 		{
-			z = ft_atoi(lst->content);
+			z = (double)ft_atoi(buff[x]);
 			plt->point_matrix[y][x] = create_vertex(x, y, z);
 			plt->z_min = (z < plt->z_min ? z : plt->z_min);
 			plt->z_max = (z > plt->z_max ? z : plt->z_max);
@@ -93,7 +83,6 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 		y++;
 	}
 }
-
 /*
 ** Creates matrix with local coordinates.
 */
@@ -105,5 +94,3 @@ void	create_vertices(t_plot *plt, char *filename)
 	convert_lst_to_arr(plt, load_file(plt, fd));
 	close(fd);
 }
-
-

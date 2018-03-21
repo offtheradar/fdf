@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:05:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/18 11:59:02 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/20 17:30:06 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,22 @@
 
 void		zero_matrix(double mat[4][4])
 {
-	int i;
-
-	i = -1;
-	while (mat[++i])
-		ft_bzero(mat[i], sizeof(double) * 4);
+	ft_bzero(mat[0], sizeof(double) * 4);
+	ft_bzero(mat[1], sizeof(double) * 4);
+	ft_bzero(mat[2], sizeof(double) * 4);
+	ft_bzero(mat[3], sizeof(double) * 4);
 }
-
 /*
 ** Create a 4 x 4 Identity Matrix
 */
 
 void		identity_matrix(double mat[4][4])
 {
-	int i;
-	int j;
-
-	i = -1;
-	while (mat[++i])
-	{
-		j = -1;
-		while (mat[i][++j])
-			if (i == j)
-				mat[i][j] = 1;
-	}
+	zero_matrix(mat);
+	mat[0][0] = 1;
+	mat[1][1] = 1;
+	mat[2][2] = 1;
+	mat[3][3] = 1;
 }
 
 void		translate_matrix(double mat[4][4], double tx, double ty, double tz)
