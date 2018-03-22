@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/20 18:04:03 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 12:54:47 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct		s_info
 	void		*mlx_ptr;
 	void		*mlx_win;
 	void		*img;
-	int			is_proj;
 	double		focal_distance;
 	double		scale;
 	double		sx;
