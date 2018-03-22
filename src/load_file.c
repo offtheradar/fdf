@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/20 16:03:43 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 13:45:00 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_list			*load_file(t_plot *plt, int fd)
 			plt->width = ft_count_words(buff, ' ');
 		ft_lst_add_to_end(ft_lstnew(buff, ft_strlen(buff) + 1), &list);
 		(plt->height)++;
+		free(buff);
 	}
 	return (list);
 }
@@ -71,7 +72,7 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 		x = 0;
 		plt->point_matrix[y] = (t_vertex **)ft_memalloc(sizeof(t_vertex *) * plt->width);
 		buff = ft_strsplit(lst->content, ' ');
-		while (x < plt->width)
+		while (x < plt->width && buff[x])
 		{
 			z = (double)ft_atoi(buff[x]);
 			plt->point_matrix[y][x] = create_vertex(x, y, z);
@@ -79,6 +80,8 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 			plt->z_max = (z > plt->z_max ? z : plt->z_max);
 			x++;
 		}
+		ft_free_doublep(buff);
+		free(buff);
 		lst = lst->next;
 		y++;
 	}

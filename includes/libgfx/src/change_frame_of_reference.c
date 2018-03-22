@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 15:44:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/21 11:02:16 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 13:13:33 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ void	local_to_world(t_info *info)
 	translate_matrix(global, -((info->plot)->width / 2),
 							-((info->plot)->height / 2), 0);
 	scale_matrix(global, info->sx, info->sy, info->sz);
-	y = -1;
-	while (++y < info->plot->height)
+	y = 0;
+	while (y < info->plot->height)
 	{
-		x = -1;
-		while (++x < info->plot->width)
+		x = 0;
+		while (x < info->plot->width)
+		{
 			ft_mult_mat_vec(global, info->plot->point_matrix[y][x]->local,
 							info->plot->point_matrix[y][x]->world);
+			x++;
+		}
+		y++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:44:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/21 11:13:58 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 12:57:44 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void		draw_line(t_3d_pixel p0, t_3d_pixel p1, t_info *info)
 	error = -1.0;
 	while ((int)p0.x != (int)p1.x)
 	{
-		mlx_pixel_put(info->mlx_ptr, info->mlx_win, dir ? p0.y : p0.x, dir ? p0.x : p0.y, 0x000FFF);
+		mlx_pixel_put(info->mlx_ptr, info->mlx_win, dir ? p0.y : p0.x, dir ?
+				p0.x : p0.y, 0x000FFF);
 		error += slope;
 		if (error >= 0.0)
 		{
