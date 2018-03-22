@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 13:55:40 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:25:48 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ t_info		*init_info(void)
 	info = malloc(sizeof(t_info));
 	info->mlx_ptr = mlx_init();
 	info->mlx_win = mlx_new_window(info->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "FDF");
-	info->theta = 10.0;
-	info->phi = 15.0;
-	info->psi = 20.0;
+	info->theta = 0.5;
+	info->phi = 0.0;
+	info->psi = 0.0;
 	info->scale = 0.5;
 	info->sx = 1.0;
 	info->sy = 1.0;

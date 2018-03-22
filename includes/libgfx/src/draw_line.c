@@ -6,11 +6,11 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:44:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 12:57:44 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:31:12 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libgfx.h>
+#include "../libgfx.h"
 /*
 void	create_delta_step(t_draw *var, t_3d_pixel *p0, t_3d_pixel *p1)
 {
@@ -69,6 +69,19 @@ static int	swap_vars(t_3d_pixel *p0, t_3d_pixel *p1)
 	return (1);
 }
 
+void		draw_point(t_info *info, int x, int y, double z)
+{
+	int	colour_index;
+
+	if (x > 0 && x < WIN_WIDTH && y > 0 && y < WIN_HEIGHT)
+	{
+		colour_index = abs((int)(((z - info->plot->z_min) /
+						(info->plot->z_max - info->plot->z_min))
+						* (info->num_colours)) - 1);
+		mlx_pixel_put(info->mlx_ptr, info->mlx_win, x, y,
+							info->colours[colour_index]);
+	}
+}
 void		draw_line(t_3d_pixel p0, t_3d_pixel p1, t_info *info)
 {
 	float	delta[3];
@@ -84,8 +97,7 @@ void		draw_line(t_3d_pixel p0, t_3d_pixel p1, t_info *info)
 	error = -1.0;
 	while ((int)p0.x != (int)p1.x)
 	{
-		mlx_pixel_put(info->mlx_ptr, info->mlx_win, dir ? p0.y : p0.x, dir ?
-				p0.x : p0.y, 0x000FFF);
+		draw_point(info, dir ? p0.y : p0.x, dir ? p0.x : p0.y, p0.z);
 		error += slope;
 		if (error >= 0.0)
 		{

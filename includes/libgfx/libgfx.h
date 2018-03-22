@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 13:46:15 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:12:50 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ t_3d_pixel			*create_3d_pix(double x, double y, double z);
 t_vertex			*create_vertex(double x, double y, double z);
 
 t_info				*init_info(void);
+
+void				draw_point(t_info *info, int x, int y, double z);
 
 int					*init_colours(t_info *info);
 
