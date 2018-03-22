@@ -6,14 +6,14 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 14:12:50 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:54:29 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBGFX_H
 # define LIBGFX_H
-# define WIN_WIDTH 500
-# define WIN_HEIGHT 500
+# define WIN_WIDTH 2000
+# define WIN_HEIGHT 1500
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
