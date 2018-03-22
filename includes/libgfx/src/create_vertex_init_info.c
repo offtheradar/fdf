@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 13:17:59 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 13:55:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_vertex	*create_vertex(double x, double y, double z)
 	vertex->projected = create_3d_pix(0, 0, 0);
 	return (vertex);
 }
-/*
+
 int			*init_colours(t_info *info)
 {
 	int		*colours;
@@ -64,10 +64,11 @@ int			*init_colours(t_info *info)
 		b = (-cos(f) + info->b) * 127;
 		colours[i] = ((int)b) << 16 | ((int)g) << 8 | r;
 		f += M_PI / info->num_colours;
+		i++;
 	}
 	return (colours);
 }
-*/
+
 t_info		*init_info(void)
 {
 	t_info	*info;
@@ -89,7 +90,7 @@ t_info		*init_info(void)
 	info->g = 192;
 	info->b = 203;
 	info->num_colours = 100;
-//	info->colours = init_colours(info);
+	info->colours = init_colours(info);
 	info->focal_distance = 7.0;
 	return (info);
 }
