@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 10:12:09 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/21 11:07:33 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:52:58 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,26 @@ void	construct_wf(t_info *info)
 	}
 }
 
+int		change_colours(int keycode, t_info *info)
+{
+	if (keycode == 8)
+	{
+		info->r = rand() % 3;
+		info->g = rand() % 3;
+		info->b = rand() % 3;
+		info->colours = init_colours(info);
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	return (1);
+}
+
 void	draw_wf(t_info *info)
 {
 	local_to_world(info);
 	world_to_aligned(info);
 	aligned_to_projected(info);
 	construct_wf(info);
+	mlx_key_hook(info->mlx_win, change_colours, info);
 	mlx_loop(info->mlx_ptr);
 }
