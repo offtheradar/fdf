@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 10:12:09 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 16:52:58 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 21:58:05 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,117 @@ int		change_colours(int keycode, t_info *info)
 		mlx_clear_window(info->mlx_ptr, info->mlx_win);
 		draw_wf(info);
 	}
+	if (keycode == 6)
+	{
+		info->sz += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 16)
+	{
+		info->sy += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 7)
+	{
+		info->sx += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 0)
+	{
+		info->sz -= 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 4)
+	{
+		info->sy -= 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 1)
+	{
+		info->sx -= 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 2)
+	{
+		info->tx += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 3)
+	{
+		info->ty += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 5)
+	{
+		info->tz += 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 8)
+	{
+		info->tx -= 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 9)
+	{
+		info->ty -= 0.25;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 11)
+	{
+		info->tz -= 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 124)
+	{
+		info->theta += 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 126)
+	{
+		info->phi += 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 24)
+	{
+		info->psi += 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 123)
+	{
+		info->theta -= 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 125)
+	{
+		info->phi -= 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 27)
+	{
+		info->psi -= 0.5;
+		mlx_clear_window(info->mlx_ptr, info->mlx_win);
+		draw_wf(info);
+	}
+	if (keycode == 53)
+		exit(0);
+
 	return (1);
 }
 

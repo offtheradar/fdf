@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 15:44:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 13:13:33 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/22 21:49:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	world_to_aligned(t_info *info)
 	rotate_matrix(global, info->theta, info->phi, info->psi);
 	scale_matrix(global, (info->scale * WIN_WIDTH) / info->plot->width,
 				(info->scale * WIN_HEIGHT) / info->plot->height, info->scale);
-	translate_matrix(global, info->sx, info->sy, info->sz);
+	translate_matrix(global, info->tx, info->ty, info->tz);
 	y = -1;
 	while (++y < info->plot->height)
 	{
