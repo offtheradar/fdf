@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:05:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/20 17:30:06 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/23 11:04:54 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		zero_matrix(double mat[4][4])
 	ft_bzero(mat[2], sizeof(double) * 4);
 	ft_bzero(mat[3], sizeof(double) * 4);
 }
+
 /*
 ** Create a 4 x 4 Identity Matrix
 */

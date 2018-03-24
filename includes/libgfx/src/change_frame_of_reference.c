@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 15:44:21 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 21:49:40 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/23 16:14:02 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	world_to_aligned(t_info *info)
 /*
 ** Project world coordinates to 2D, save in projected matrix.
 */
+
 void	aligned_to_projected(t_info *info)
 {
 	double	global[4][4];
@@ -86,15 +87,16 @@ void	aligned_to_projected(t_info *info)
 		{
 			if (info->plot->point_matrix[y][x]->aligned->z == 0)
 				info->plot->point_matrix[y][x]->aligned->z = 0.001;
-			info->plot->point_matrix[y][x]->projected->x = info->focal_distance
-				* info->plot->point_matrix[y][x]->aligned->x
-				/ (info->plot->z_max - info->plot->point_matrix[y][x]->aligned->z)
-				+ WIN_WIDTH / 2;
+			info->plot->point_matrix[y][x]->projected->x =
+				info->focal_distance *
+				info->plot->point_matrix[y][x]->aligned->x
+				/ (info->plot->z_max -
+				info->plot->point_matrix[y][x]->aligned->z) + WIN_WIDTH / 2;
 			info->plot->point_matrix[y][x]->projected->y = info->focal_distance
-				* info->plot->point_matrix[y][x]->aligned->y
-				/ (info->plot->z_max - info->plot->point_matrix[y][x]->aligned->z)
-				+ WIN_HEIGHT / 2;
-			info->plot->point_matrix[y][x]->projected->z = info->plot->point_matrix[y][x]->local->z;
+			* info->plot->point_matrix[y][x]->aligned->y / (info->plot->z_max -
+				info->plot->point_matrix[y][x]->aligned->z) + WIN_HEIGHT / 2;
+			info->plot->point_matrix[y][x]->projected->z =
+				info->plot->point_matrix[y][x]->local->z;
 		}
 	}
 }

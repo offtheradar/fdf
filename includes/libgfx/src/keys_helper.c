@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keys_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 19:41:03 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/23 16:58:00 by ysibous          ###   ########.fr       */
+/*   Created: 2018/03/23 15:57:07 by ysibous           #+#    #+#             */
+/*   Updated: 2018/03/23 17:46:42 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
-#include <stdio.h>
+#include "../libgfx.h"
 
-int		main(int argc, char **argv)
+/*
+** Redraw grid.
+*/
+
+void	redraw(t_info *info)
 {
-	t_info	*info;
-
-	if (argc != 2)
-	{
-		ft_putstr("Usage: ./fdf file-name");
-		return (1);
-	}
-	info = init_info();
-	info->plot = (t_plot *)ft_memalloc(sizeof(t_plot));
-	create_vertices(info->plot, argv[1]);
+	mlx_clear_window(info->mlx_ptr, info->mlx_win);
 	draw_wf(info);
-	return (0);
+}
+
+/*
+** Change given variable - angle, scale, translation.
+*/
+
+void	change_var(int plus, double *to_change, t_info *info)
+{
+	if (plus)
+		*to_change += 0.25;
+	else
+		*to_change -= 0.25;
+	redraw(info);
 }

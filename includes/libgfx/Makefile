@@ -6,7 +6,7 @@
 #    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/16 14:50:23 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/19 19:32:54 by ysibous          ###   ########.fr        #
+#    Updated: 2018/03/23 16:11:02 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ FILES +=	matrix_rotations.c
 FILES +=	matrix_transforms.c
 FILES +=	build_wire_frame.c
 FILES +=	create_vertex_init_info.c
+FILES +=	keys.c
+FILES +=	keys_helper.c
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror

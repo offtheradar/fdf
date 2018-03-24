@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 16:38:28 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/23 17:47:08 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,18 @@ typedef struct		s_info
 
 void				redraw_wf(t_info *info);
 
+void				change_var(int plus, double *to_change, t_info *info);
+
+int					key_hook(int keycode, t_info *info);
+
+void				change_colours(int keycode, t_info *info);
+
+void				change_angle(int keycode, t_info *info);
+
+void				change_scale(int keycode, t_info *info);
+
+void				change_translation(int keycode, t_info *info);
+
 t_2d_pixel			*create_2d_pix(double x, double y);
 
 t_3d_pixel			*create_3d_pix(double x, double y, double z);
@@ -100,8 +112,6 @@ t_3d_pixel			*create_3d_pix(double x, double y, double z);
 t_vertex			*create_vertex(double x, double y, double z);
 
 t_info				*init_info(void);
-
-int					change_colours(int keycode, t_info *info);
 
 void				draw_point(t_info *info, int x, int y, double z);
 

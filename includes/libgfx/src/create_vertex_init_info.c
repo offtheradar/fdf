@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 14:25:48 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/23 18:04:22 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,17 @@ int			*init_colours(t_info *info)
 	int		*colours;
 	int		i;
 	float	f;
-	int		r;
-	int		g;
-	int		b;
+	int		rgb[3];
 
 	colours = (int *)ft_memalloc(sizeof(int) * info->num_colours);
 	f = 0;
 	i = 0;
 	while (i < info->num_colours)
 	{
-		r = (cos(f) + info->r) * 127;
-		g = (sin(f) + info->g) * 127;
-		b = (-cos(f) + info->b) * 127;
-		colours[i] = ((int)b) << 16 | ((int)g) << 8 | r;
+		rgb[0] = (cos(f) + info->r) * 127;
+		rgb[1] = (sin(f) + info->g) * 127;
+		rgb[2] = (-cos(f) + info->b) * 127;
+		colours[i] = ((int)rgb[2]) << 16 | ((int)rgb[1]) << 8 | rgb[0];
 		f += M_PI / info->num_colours;
 		i++;
 	}
