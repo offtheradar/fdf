@@ -6,14 +6,14 @@
 #    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 18:15:35 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/23 18:42:14 by ysibous          ###   ########.fr        #
+#    Updated: 2018/03/25 11:41:30 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf.a
+NAME = fdf
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -o
 FRAMEW = -framework OpenGL -framework Appkit
 
 FILES = main.c
@@ -23,11 +23,11 @@ SRC = $(addprefix src/, $(FILES))
 
 all: $(NAME)
 
-MLIBX: includes/minilibx/mlx.a
+MLIBX = includes/minilibx/libmlx.a
 
-LIBFT: includes/libft/libft.a
+LIBFT = includes/libft/libft.a
 
-LIBGFX: includes/libgfx/libgfx.a
+LIBGFX = includes/libgfx/libgfx.a
 
 mlibft.a: 
 		make -C includes -C libft re
@@ -39,4 +39,4 @@ mlibx.a:
 		make -C includes -C minilibx re
 
 $(NAME): mlibft.a mlibgfx.a mlibx.a
-	@$(CC) $(CFLAGS) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW)
+	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW)

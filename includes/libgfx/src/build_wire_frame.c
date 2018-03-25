@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 10:12:09 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/23 16:12:39 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/24 20:17:43 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	construct_wf(t_info *info)
 		x = -1;
 		while (++x < info->plot->width)
 		{
-			if (x < info->plot->width - 1)
+			if (x < info->plot->width - 1 && x < WIN_WIDTH)
 				draw_line(*(info->plot->point_matrix[y][x]->projected),
 							*(info->plot->point_matrix[y][x + 1]->projected),
 								info);
-			if (y < info->plot->height - 1)
+			if (y < info->plot->height - 1 && y < WIN_HEIGHT)
 				draw_line(*(info->plot->point_matrix[y][x]->projected),
 							*(info->plot->point_matrix[y + 1][x]->projected),
 								info);
