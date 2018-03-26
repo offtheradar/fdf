@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 19:41:03 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/25 11:59:23 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/26 14:14:08 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	info = init_info();
-	info->plot = (t_plot *)ft_memalloc(sizeof(t_plot));
 	create_vertices(info->plot, argv[1]);
 	draw_wf(info);
 	return (0);

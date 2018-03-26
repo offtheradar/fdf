@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/25 11:12:19 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/26 14:16:23 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ t_info		*init_info(void)
 	t_info	*info;
 
 	info = (t_info *)ft_memalloc(sizeof(t_info));
+	info->plot = (t_plot *)ft_memalloc(sizeof(t_plot));
+	info->plot->height = 0;
+	info->plot->width = 0;
+	info->plot->z_min = MAX_INT;
+	info->plot->z_max = MIN_INT;
 	info->mlx_ptr = mlx_init();
 	info->mlx_win = mlx_new_window(info->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "FDF");
 	info->theta = 0.5;

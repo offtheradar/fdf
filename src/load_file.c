@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/26 12:34:37 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/26 14:17:45 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ t_list	*load_file(t_plot *plt, int fd)
 	list = NULL;
 	plt->width = -1;
 	plt->height = 0;
-	plt->z_min = MAX_INT;
-	plt->z_max = MIN_INT;
 	while ((result = get_next_line(fd, &buff)) > 0)
 	{
 		if (plt->width == -1)
