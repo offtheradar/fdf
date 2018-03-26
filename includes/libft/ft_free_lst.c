@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_doublep.c                                  :+:      :+:    :+:   */
+/*   ft_free_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 13:39:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/26 12:23:46 by ysibous          ###   ########.fr       */
+/*   Created: 2018/03/26 12:18:55 by ysibous           #+#    #+#             */
+/*   Updated: 2018/03/26 12:32:27 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_doublep(char **str)
+void	ft_free_lst(t_list *lst)
 {
-	int		i;
-	char	*s;
+	t_list *tmp;
 
-	s = 0;
-	i = 0;
-	while (str[i])
+	tmp = 0;
+	while (lst != NULL)
 	{
-		s = str[i];
-		free(s);
-		i++;
+		tmp = lst;
+		lst = lst->next;
+		free(tmp->content);
+		free(tmp);
 	}
-	free(str);
 }

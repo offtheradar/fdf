@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 21:16:42 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/22 13:41:47 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/26 12:24:01 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+void				ft_free_lst(t_list *lst);
 
 void				ft_free_doublep(char **str);
 

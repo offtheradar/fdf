@@ -6,7 +6,7 @@
 /*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/23 18:07:44 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/03/26 12:34:37 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_list	*load_file(t_plot *plt, int fd)
 		if (plt->width == -1)
 			plt->width = ft_count_words(buff, ' ');
 		ft_lst_add_to_end(ft_lstnew(buff, ft_strlen(buff) + 1), &list);
-		(plt->height)++;
 		free(buff);
+		(plt->height)++;
 	}
 	return (list);
 }
@@ -65,17 +65,19 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 	int		x;
 	int		y;
 	int		z;
+	t_list	*tmp;
 	char	**buff;
 
 	plt->point_matrix = (t_vertex ***)ft_memalloc(sizeof(t_vertex **)
 														* plt->height);
+	tmp = lst;
 	y = -1;
-	while (++y < plt->height)
+	while (++y < plt->height && lst)
 	{
 		x = -1;
 		plt->point_matrix[y] = (t_vertex **)ft_memalloc(sizeof(t_vertex *)
 															* plt->width);
-		buff = ft_strsplit(lst->content, ' ');
+		buff = ft_strsplit(tmp->content, ' ');
 		while (++x < plt->width && buff[x])
 		{
 			z = (double)ft_atoi(buff[x]);
@@ -84,9 +86,10 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 			plt->z_max = (z > plt->z_max ? z : plt->z_max);
 		}
 		ft_free_doublep(buff);
-		free(buff);
-		lst = lst->next;
+		tmp = tmp->next;
 	}
+	free(tmp);
+	ft_free_lst(lst);
 }
 
 /*
