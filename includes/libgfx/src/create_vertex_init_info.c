@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_vertex_init_info.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/26 14:16:23 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 19:08:48 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_2d_pixel	*create_2d_pix(double x, double y)
 {
 	t_2d_pixel	*pix;
 
-	pix = (t_2d_pixel *)malloc(sizeof(t_2d_pixel));
+	pix = (t_2d_pixel *)ft_memalloc(sizeof(t_2d_pixel));
 	pix->x = x;
 	pix->y = y;
 	return (pix);
@@ -26,7 +26,7 @@ t_3d_pixel	*create_3d_pix(double x, double y, double z)
 {
 	t_3d_pixel *pix;
 
-	pix = (t_3d_pixel *)malloc(sizeof(t_3d_pixel));
+	pix = (t_3d_pixel *)ft_memalloc(sizeof(t_3d_pixel));
 	pix->x = x;
 	pix->y = y;
 	pix->z = z;
@@ -37,7 +37,7 @@ t_vertex	*create_vertex(double x, double y, double z)
 {
 	t_vertex *vertex;
 
-	vertex = malloc(sizeof(t_vertex));
+	vertex = ft_memalloc(sizeof(t_vertex));
 	vertex->local = create_3d_pix(x, y, z);
 	vertex->world = create_3d_pix(0, 0, 0);
 	vertex->aligned = create_3d_pix(0, 0, 0);
@@ -52,6 +52,10 @@ int			*init_colours(t_info *info)
 	float	f;
 	int		rgb[3];
 
+	info->r = 255;
+	info->g = 192;
+	info->b = 203;
+	info->num_colours = 100;
 	colours = (int *)ft_memalloc(sizeof(int) * info->num_colours);
 	f = 0;
 	i = 0;
@@ -89,10 +93,6 @@ t_info		*init_info(void)
 	info->tx = 0.0;
 	info->ty = 0.0;
 	info->tz = 0.0;
-	info->r = 255;
-	info->g = 192;
-	info->b = 203;
-	info->num_colours = 100;
 	info->colours = init_colours(info);
 	info->focal_distance = 3.0;
 	return (info);

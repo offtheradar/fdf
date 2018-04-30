@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 11:14:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/24 20:14:36 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 19:05:56 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	change_angle(int keycode, t_info *info)
 		change_var(0, &info->psi, info);
 	if (keycode == 26)
 		change_var(0, &info->scale, info);
-
 }
 
 void	change_scale(int keycode, t_info *info)
