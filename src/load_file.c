@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 23:51:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/26 14:17:45 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 20:20:50 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,25 @@ t_list	*load_file(t_plot *plt, int fd)
 ** aligned coordinates.
 */
 
+void	convert_lst_to_arr_helper(t_plot *plt, char **buff, int y)
+{
+	int x;
+	int	z;
+
+	x = -1;
+	z = 0;
+	while (++x < plt->width && buff[x])
+	{
+		z = (double)ft_atoi(buff[x]);
+		plt->point_matrix[y][x] = create_vertex(x, y, z);
+		plt->z_min = (z < plt->z_min ? z : plt->z_min);
+		plt->z_max = (z > plt->z_max ? z : plt->z_max);
+	}
+}
+
 void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 {
-	int		x;
 	int		y;
-	int		z;
 	t_list	*tmp;
 	char	**buff;
 
@@ -72,17 +86,10 @@ void	convert_lst_to_arr(t_plot *plt, t_list *lst)
 	y = -1;
 	while (++y < plt->height && lst)
 	{
-		x = -1;
 		plt->point_matrix[y] = (t_vertex **)ft_memalloc(sizeof(t_vertex *)
 															* plt->width);
 		buff = ft_strsplit(tmp->content, ' ');
-		while (++x < plt->width && buff[x])
-		{
-			z = (double)ft_atoi(buff[x]);
-			plt->point_matrix[y][x] = create_vertex(x, y, z);
-			plt->z_min = (z < plt->z_min ? z : plt->z_min);
-			plt->z_max = (z > plt->z_max ? z : plt->z_max);
-		}
+		convert_lst_to_arr_helper(plt, buff, y);
 		ft_free_doublep(buff);
 		tmp = tmp->next;
 	}
