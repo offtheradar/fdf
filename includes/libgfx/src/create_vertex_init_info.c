@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 19:08:48 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 20:32:21 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ int			*init_colours(t_info *info)
 	float	f;
 	int		rgb[3];
 
-	info->r = 255;
-	info->g = 192;
-	info->b = 203;
 	info->num_colours = 100;
 	colours = (int *)ft_memalloc(sizeof(int) * info->num_colours);
 	f = 0;
@@ -69,6 +66,13 @@ int			*init_colours(t_info *info)
 		i++;
 	}
 	return (colours);
+}
+
+void		init_rgb(t_info *info)
+{
+	info->r = 255;
+	info->g = 192;
+	info->b = 203;
 }
 
 t_info		*init_info(void)
@@ -93,6 +97,7 @@ t_info		*init_info(void)
 	info->tx = 0.0;
 	info->ty = 0.0;
 	info->tz = 0.0;
+	init_rgb(info);
 	info->colours = init_colours(info);
 	info->focal_distance = 3.0;
 	return (info);

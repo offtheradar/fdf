@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 19:41:03 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/26 14:14:08 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 20:29:32 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int		main(int argc, char **argv)
 	info = init_info();
 	create_vertices(info->plot, argv[1]);
 	draw_wf(info);
+	while (1){};
 	return (0);
 }
