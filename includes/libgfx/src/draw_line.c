@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:44:20 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 19:05:34 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 16:56:32 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void			draw_point(t_info *info, int x, int y, double z)
 {
 	int	colour_index;
 
-	if (x > 0 && x < WIN_WIDTH && y > 0 && y < WIN_HEIGHT)
+	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
 	{
 		colour_index = abs((int)(((z - info->plot->z_min) /
 						(info->plot->z_max - info->plot->z_min))
 						* (info->num_colours)) - 1);
 		mlx_pixel_put(info->mlx_ptr, info->mlx_win, x, y,
-							info->colours[colour_index]);
+							info->colours[12]);
 	}
 }
 
@@ -67,3 +67,4 @@ void			draw_line(t_3d_pixel p0, t_3d_pixel p1, t_info *info)
 		p0.x += (p0.x > p1.x) ? -1.0 : 1.0;
 	}
 }
+

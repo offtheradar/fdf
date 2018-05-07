@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ysibous <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 18:15:35 by ysibous           #+#    #+#              #
-#    Updated: 2018/03/25 11:41:30 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/06 19:00:52 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ mlibx.a:
 		make -C includes -C minilibx re
 
 $(NAME): mlibft.a mlibgfx.a mlibx.a
-	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW)
+	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW) -fsanitize=address
